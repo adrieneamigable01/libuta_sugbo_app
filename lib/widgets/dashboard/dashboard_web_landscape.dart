@@ -7,13 +7,15 @@ import 'package:libuta_sugbo_app/contants/dropdown_constants.dart';
 import 'package:libuta_sugbo_app/cubit/auth/auth_cubit.dart';
 import 'package:libuta_sugbo_app/models/business_info_model.dart';
 import 'package:libuta_sugbo_app/models/user_model.dart';
-import 'package:libuta_sugbo_app/pages/dashboard/dashboard_admin_listing_page.dart';
+import 'package:libuta_sugbo_app/pages/dashboard/listings/dashboard_admin_listing_page.dart';
 import 'package:libuta_sugbo_app/pages/dashboard/dashboard_main_page.dart';
 import 'package:libuta_sugbo_app/widgets/common/admin_app_bar_widget.dart';
 import 'package:go_router/go_router.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 
 import 'package:libuta_sugbo_app/models/user_info_model.dart';
+
+import '../../pages/dashboard/listings/dashboard_admin_add_listings_page.dart';
 
 class DashboardWebLandscape extends StatefulWidget {
   const DashboardWebLandscape({super.key});
@@ -296,8 +298,13 @@ class _DashboardWebLandscapeState extends State<DashboardWebLandscape> {
                       ),
                       Container(
                         color: Colors.white,
-                        child: DashboardAdminListingPage(),
+                        child: DashboardAdminListingPage(addListingsCallback:()=> gotoPage(2,context),),
                       ),
+                      Container(
+                        color: Colors.white,
+                        child: DashboardAdminAddListingPage(),
+                      ),
+                      
                     ],
                   ),
                 ),

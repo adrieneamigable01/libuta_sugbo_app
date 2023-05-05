@@ -6,6 +6,7 @@ import 'package:libuta_sugbo_app/models/user_model.dart';
 import 'package:libuta_sugbo_app/models/user_info_model.dart';
 import 'package:libuta_sugbo_app/models/business_info_model.dart';
 import 'package:libuta_sugbo_app/models/listing_list_model.dart';
+import 'package:libuta_sugbo_app/models/accomodation_model.dart';
 
 ///HiveDB Helper
 ///
@@ -25,12 +26,14 @@ class HiveDBHelper {
     Hive.registerAdapter(Adapters.userInfoModelAdapter);
     Hive.registerAdapter(Adapters.businessInfoModelAdapter);
     Hive.registerAdapter(Adapters.listingListModelAdapter);
+    Hive.registerAdapter(Adapters.accomodationModelAdapter);
     // Hive.registerAdapter(Adapters.timesheetModelAdapter);
 
     await Hive.openBox(Boxes.userBox);
     await Hive.openBox(Boxes.userInfoBox);
     await Hive.openBox(Boxes.businessInfoBox);
     await Hive.openBox(Boxes.listingListBox);
+    await Hive.openBox(Boxes.accomodationBox);
     // await Hive.openBox(Boxes.timesheetBox);
   }
 
@@ -63,6 +66,7 @@ class Boxes {
   static const String userInfoBox         = 'userInfoBox';
   static const String businessInfoBox     = 'businessInfoBox';
   static const String listingListBox      = 'listingListBox';
+  static const String accomodationBox     = 'accomodationBox';
 }
 
 ///Static adapter list.
@@ -78,4 +82,5 @@ class Adapters {
   static final UserInfoModelAdapter userInfoModelAdapter              = UserInfoModelAdapter();
   static final BusinessInfoModelAdapter businessInfoModelAdapter      = BusinessInfoModelAdapter();
   static final ListingListModelAdapter listingListModelAdapter        = ListingListModelAdapter();
+  static final AccomodationModelAdapter accomodationModelAdapter       = AccomodationModelAdapter();
 }

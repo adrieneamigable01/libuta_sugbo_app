@@ -36,6 +36,7 @@ class AuthCubit extends Cubit<AuthState> {
     await _userBox.clearUserData();
     await _userInfoBox.clear();
     await _businessInfoBox.clear();
+    
   }
 
   login({required Object payload}) async {
@@ -49,16 +50,12 @@ class AuthCubit extends Cubit<AuthState> {
       await _userBox.insertUserData(responseModel.data);
       await _usersCubit.getProfile("user_id=${_userBox.userData.userId}");
       await _listingsCubit.getListings("business_id=${_businessInfoBox.data.businessId}");
+      await _listingsCubit.getAccomodations("");
       emit(const LoadingAuthState(false));
       emit(SuccessAuthState(responseModel.message, responseModel.isError));
     }else{
       emit(const LoadingAuthState(false));
       emit(FailureAuthState(responseModel.message, responseModel.isError));
     }
-
-   
-   
-    
-
   }
 }

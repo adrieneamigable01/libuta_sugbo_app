@@ -2,7 +2,6 @@ const _kProductionDomain = 'api.goshop.website';
 const _kDevelopmentDomain = 'http://localhost/libutasugbo_api/';
 
 const _kAPIDomain = _kDevelopmentDomain;
-
 var kBuildNumber = "0.0.3";
 
 Uri kAuthLogin = Uri.parse('${_kAPIDomain}api/auth/login'); // Login
@@ -13,3 +12,6 @@ Uri kGetUserProfile = Uri.parse('${_kAPIDomain}api/users/profile'); // User Prof
 
 // Listings
 Uri kGetUserListing = Uri.parse('${_kAPIDomain}api/listing'); // Listing List
+
+// Accomodation
+Uri kGetAccomodations= Uri.parse('${_kAPIDomain}api/accomodation'); // Listing List

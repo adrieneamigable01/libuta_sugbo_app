@@ -9,7 +9,11 @@ UserBox _userBox = UserBox();
 ListingListBox _listingListBox = ListingListBox();
 
 class DashboardOwnerListingWidget extends StatelessWidget {
-  const DashboardOwnerListingWidget({Key? key}) : super(key: key);
+  final Function addListingsCallback;
+  const DashboardOwnerListingWidget({
+    Key? key,
+    required this.addListingsCallback,
+    }) : super(key: key);
 
 
 
@@ -17,10 +21,10 @@ class DashboardOwnerListingWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
+  
+  bool isLoading = false ;
 
-    bool isLoading = false ;
-
-
+  String buttonName = "Accomodation";
     
   Widget createListingButton = Container(
     width: 300,
@@ -42,12 +46,12 @@ class DashboardOwnerListingWidget extends StatelessWidget {
     child: MaterialButton(
     onPressed: !isLoading
           ? () {
-              
+               this.addListingsCallback();
             }
           // ignore: dead_code
           : null,
-      child: const Text(
-        "Create Listing",
+      child: Text(
+        "Add ${buttonName}",
         textAlign: TextAlign.center,
         style: TextStyle(
           color: Colors.white,
@@ -101,7 +105,9 @@ class DashboardOwnerListingWidget extends StatelessWidget {
                             )
                           )
                         ),
-                        onPressed: () => null
+                        onPressed: () {
+                          this.addListingsCallback();
+                        }
                       )
                     ),
                     Expanded(
